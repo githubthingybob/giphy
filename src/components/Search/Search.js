@@ -41,10 +41,11 @@ class Search extends Component {
                     <Link to="/favorites">see my favorites!</Link>
                 </Router>
                 <h1>Search Router</h1>
-                <ul>
+
                 {this.props.reduxState.imageList.map(image =>
-                <li key = {image.id}><img src ={image.url}/></li>)}
-            </ul>
+                // <li key = {image.id}><img src ={image.url}/></li>)}
+                {return <img src ={image.images.original.url}/>})}
+
 
             <input onChange={(event) => this.handleChange(event, 'searchQuery')} placeholder="what do you want to see gifs of?"></input>
                 <button onClick={this.handleClick}>get me gifs!</button> 
