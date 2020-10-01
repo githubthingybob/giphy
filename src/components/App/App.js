@@ -1,13 +1,7 @@
 import React, { Component } from 'react';
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
-import { createStore, combineReducers, applyMiddleware } from 'redux';
-// Provider allows us to use redux within our react app
-import { Provider } from 'react-redux';
-import logger from 'redux-logger';
-// Import saga middleware
-import createSagaMiddleware from 'redux-saga';
-import { takeEvery, put } from 'redux-saga/effects';
-import axios from 'axios';
+//import axios from 'axios';
+import { connect } from "react-redux";
 
 // Components
 import Search from '../Search/Search';
@@ -22,13 +16,24 @@ class App extends Component {
         <header>
           <h1>Giphy Search</h1>
           <h3>Team Saga-Me</h3>
+          <p><Link to="/">Search</Link></p>
+          <p><Link to="/favorites">Favorites</Link></p>
+
         </header>
       </div>
-      <Route path="/" component={Search} exact />
-      <Route path="/favorites" component={Favorites} />
+
+      <Route path="/favorites">
+        <Favorites/> 
+      </Route>
+
+      <Route exact path="/">
+        <Search/> 
+      </Route>
+
+
     </Router>
     );
   }
 }
 
-export default App;
+export default connect()(App);
