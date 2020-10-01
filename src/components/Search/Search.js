@@ -44,7 +44,7 @@ class Search extends Component {
 
                 {this.props.reduxState.imageList.map(image =>
                 // <li key = {image.id}><img src ={image.url}/></li>)}
-                {return <img src ={image.images.original.url}/>})}
+                {return <img src ={image.images.downsized.url}/>})}
 
 
             <input onChange={(event) => this.handleChange(event, 'searchQuery')} placeholder="what do you want to see gifs of?"></input>
