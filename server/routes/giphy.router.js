@@ -4,35 +4,15 @@ const axios = require('axios');
 const { response } = require('express');
 require('dotenv').config();
 
-// router.get('/:term', (req, res) => {
-    
-//     axios.get(`http://api.giphy.com/v1/gifs/search?api_key=${process.env.GIPHY_API_KEY}&q=${req.params.term}`)
-//         .then(response => {
-//             console.log(response.data);
-//             res.send(response.data)
-//         })
-//         .catch(err => {
-//             console.log(err);
-//             res.sendStatus(500)
-
-//         })
-//         console.log(req.body);
-
-
-// });
-
-
-router.get('/', (req, res) => {
-    console.log('req.params', req.params);
+router.get('/:term', (req, res) => {
     axios({
         method: 'GET',
         url: `http://api.giphy.com/v1/gifs/search?api_key=${process.env.GIPHY_API_KEY}&q=${req.params.term}`,
-        // params: {
-        //     api_key: process.env.GIPHY_API_KEY,
-        //     q: req.params
-        // }
+
     }).then(response => {
         console.log('LOOOOOOK HEREEEE', response.data);
+        console.log('IT FINALLY WORKS! HERE IS THE REQ:', req.params.term,);
+        
 
         res.send(response.data);
     }).catch(err => {

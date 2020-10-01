@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { HashRouter as Router, Link } from 'react-router-dom';
+import SearchItem from '../SearchItem/SearchItem.js';
+
 
 //TEXT INPUT (with local state onChange)
 //BUTTON TO CLICK (with onClick function)
@@ -42,9 +44,12 @@ class Search extends Component {
                 </Router>
                 <h1>Search Router</h1>
 
-                {this.props.reduxState.imageList.map(image =>
+                {/* {this.props.reduxState.imageList.map(image =>
                 // <li key = {image.id}><img src ={image.url}/></li>)}
-                {return <img src ={image.images.downsized.url}/>})}
+                {return <img src ={image.images.downsized.url}/>})} */}
+
+                {this.props.reduxState.imageList.map((image, i)=> 
+                <SearchItem key={image.id} image={image} />)}
 
 
             <input onChange={(event) => this.handleChange(event, 'searchQuery')} placeholder="what do you want to see gifs of?"></input>

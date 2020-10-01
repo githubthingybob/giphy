@@ -23,8 +23,7 @@ function* getGiphyImagesSaga(action) {
     console.log('hit getGiphyImagesSaga with', action.payload);
     let response = yield axios({
         method: "GET",
-        url: `/api/giphy/`,
-        data: action.payload
+        url: `/api/giphy/${action.payload}`,
     });
     console.log('getImagesSaga in index.js', response.data);
     yield put({
