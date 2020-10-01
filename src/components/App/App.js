@@ -8,6 +8,7 @@ import logger from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
 import { takeEvery, put } from 'redux-saga/effects';
 import axios from 'axios';
+
 // Components
 import Search from '../Search/Search';
 import Favorites from '../Favorites/Favorites'
