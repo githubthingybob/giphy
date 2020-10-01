@@ -34,25 +34,31 @@ class Search extends Component {
     }
 
     render() {
+        
         return (
             <div>
                 <Router>
                     <Link to="/favorites">see my favorites!</Link>
                 </Router>
                 <h1>Search Router</h1>
-                <input onChange={(event) => this.handleChange(event, 'searchQuery')} placeholder="what do you want to see gifs of?"></input>
-                <button onClick={this.handleClick}>get me gifs!</button>
-                }
+                <ul>
+                {this.props.reduxState.imageList.map(image =>
+                <li key = {image.id}><img src ={image.url}/></li>)}
+            </ul>
+
+            <input onChange={(event) => this.handleChange(event, 'searchQuery')} placeholder="what do you want to see gifs of?"></input>
+                <button onClick={this.handleClick}>get me gifs!</button> 
             </div>
         );
     }
 
 }
 
-const mapStateToProps = (reduxStore) => {
+
+const mapStateToProps = (reduxState) => {
     return(
         {
-            reduxStore
+            reduxState
         }
     )
 }

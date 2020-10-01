@@ -23,12 +23,13 @@ function* getGiphyImagesSaga(action) {
     console.log('hit getGiphyImagesSaga with', action.payload);
     let response = yield axios({
         method: "GET",
-        url: `/api/giphy/${action.payload}`
+        url: `/api/giphy/`,
+        data: action.payload
     });
     console.log('getImagesSaga in index.js', response.data);
     yield put({
-        type: "GET_IMAGES",
-        payload: response.data
+        type: "GRAB_IMAGES",
+        payload: response.data.data
     });
 }
 
@@ -90,7 +91,7 @@ function* updateCategorySaga(action) {
 //reducer
 const imageList = (state = [], action) => {
     switch (action.type) {
-        case 'REFRESH_IMAGES':
+        case 'GRAB_IMAGES':
             console.log('state, action:', state, action.payload);
             return action.payload
         default:

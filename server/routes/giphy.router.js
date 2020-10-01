@@ -26,9 +26,13 @@ router.get('/', (req, res) => {
     console.log('req.params', req.params);
     axios({
         method: 'GET',
-        url: `http://api.giphy.com/v1/gifs/search?api_key=${process.env.GIPHY_API_KEY}&q=${req.params.term}`
+        url: `http://api.giphy.com/v1/gifs/search?api_key=${process.env.GIPHY_API_KEY}&q=${req.params.term}`,
+        // params: {
+        //     api_key: process.env.GIPHY_API_KEY,
+        //     q: req.params
+        // }
     }).then(response => {
-        console.log('got back data', response.data);
+        console.log('LOOOOOOK HEREEEE', response.data);
 
         res.send(response.data);
     }).catch(err => {
