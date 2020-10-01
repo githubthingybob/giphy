@@ -20,7 +20,7 @@ function* rootSaga() {
 }
 
 function* getGiphyImagesSaga(action) {
-    console.log('hit getGiphyImagesSaga with', action);
+    console.log('hit getGiphyImagesSaga with', action.payload);
     let response = yield axios({
         method: "GET",
         url: `/api/giphy/${action.payload}`
