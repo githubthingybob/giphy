@@ -33,7 +33,7 @@ router.post('/', (req, res) => {
 });
 
 // update given favorite with a category id
-router.put('/', (req, res) => {
+router.put('/:favId', (req, res) => {
   const updatedFavorite = req.body;
 
   const queryText = `UPDATE "favorite"
