@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const axios = require('axios');
+const { response } = require('express');
+require('dotenv').config();
 
 // router.get('/:term', (req, res) => {
     
@@ -21,12 +23,10 @@ const axios = require('axios');
 
 
 router.get('/', (req, res) => {
+    console.log('req.params', req.params);
     axios({
         method: 'GET',
-        url: 'https://api.giphy.com/v1/gifs/search',
-        params: {
-            api_key: process.env.GIPHY_API_KEY,
-        }
+        url: `http://api.giphy.com/v1/gifs/search?api_key=${process.env.GIPHY_API_KEY}&q=${req.params.term}`
     }).then(response => {
         console.log('got back data', response.data);
 
