@@ -13,4 +13,4 @@ class Favorites extends Component{
 
     }
 }
-export default Favorites 
+export default Favorites;

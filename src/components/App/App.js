@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Search from '../Search/Search';
+import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 // Provider allows us to use redux within our react app
 import { Provider } from 'react-redux';
@@ -8,8 +8,10 @@ import logger from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
 import { takeEvery, put } from 'redux-saga/effects';
 import axios from 'axios';
-import  {HashRouter as Router, Route} from 'redux-router-dom';
-import Favorites from '../Favorites/Favorites';
+
+// Components
+import Search from '../Search/Search';
+import Favorites from '../Favorites/Favorites'
 
 class App extends Component {
 
@@ -22,7 +24,7 @@ class App extends Component {
           <h3>Team Saga-Me</h3>
         </header>
       </div>
-      {/* <Route path="/search" component={Search} /> */}
+      <Route path="/" component={Search} exact />
       <Route path="/favorites" component={Favorites} />
     </Router>
     );
