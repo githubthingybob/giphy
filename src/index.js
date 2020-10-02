@@ -40,7 +40,7 @@ function* getFavoritesSaga(action) {
     });
     console.log('getFavoritesSaga in index.js', response.data);
     yield put({
-        type: "REFRESH_IMAGES",
+        type: "SET_FAVS",
         payload: response.data
     });
 }
@@ -66,10 +66,6 @@ function* postFavoritesSaga(action) {
         data: action.payload
     });
     console.log('postFavoritesSaga in index.js', response.data);
-    // yield put({
-    //     type: "REFRESH_IMAGES",
-    //     payload: response.data
-    // });
 }
 
 function* updateCategorySaga(action) {
@@ -87,7 +83,7 @@ function* updateCategorySaga(action) {
 }
 
 
-//reducer
+//reducers
 const imageList = (state = [], action) => {
     switch (action.type) {
         case 'GRAB_IMAGES':
@@ -98,9 +94,20 @@ const imageList = (state = [], action) => {
     }
 };
 
+const favsList = (state = [], action) => {
+    switch (action.type) {
+        case 'SET_FAVS':
+            console.log('state, action:', state, action.payload);
+            return action.payload
+        default:
+            return state;
+    }
+};
+
 const store = createStore(
     combineReducers({
-        imageList
+        imageList,
+        favsList
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),
