@@ -21,14 +21,14 @@ class App extends Component {
 
         </header>
       </div>
-
+      <Route exact path="/">
+        <Search/> 
+      </Route>
       <Route path="/favorites">
         <Favorites/> 
       </Route>
 
-      <Route exact path="/">
-        <Search/> 
-      </Route>
+      
 
 
     </Router>
