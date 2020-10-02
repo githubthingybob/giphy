@@ -69,17 +69,17 @@ function* postFavoritesSaga(action) {
 }
 
 function* updateCategorySaga(action) {
-    console.log('hit getCategories with', action);
+    console.log('hit Update Categories with', action.payload);
     let response = yield axios({
         method: "PUT",
-        url: '/api/favorite',
+        url: `/api/favorite/${action.payload.id}`,
         data: action.payload
     });
     console.log('updateCategorySaga in index.js', response.data);
-    yield put({
-        type: "REFRESH_IMAGES",
-        payload: response.data
-    });
+    // yield put({
+    //     type: "REFRESH_IMAGES",
+    //     payload: response.data
+    // });
 }
 
 
