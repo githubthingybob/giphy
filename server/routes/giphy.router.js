@@ -12,8 +12,6 @@ router.get('/:term', (req, res) => {
     }).then(response => {
         console.log('LOOOOOOK HEREEEE', response.data);
         console.log('IT FINALLY WORKS! HERE IS THE REQ:', req.params.term,);
-        
-
         res.send(response.data);
     }).catch(err => {
         console.error(err);
